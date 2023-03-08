@@ -1,0 +1,5 @@
+#!/bin/bash
+cat << EOF > school.mgc
+# Magic file for detecting School data files
+0   string  SCHOOL  School data file
+EOF
