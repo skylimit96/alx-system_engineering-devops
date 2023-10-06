@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#config to get network interface information and filter for IPv4
+
+ifconfig | grep -e "inet addr" | cut -d ":" -f2 | cut -d ' ' -f1
