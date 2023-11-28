@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Bash script that uses ssh to connect to a server
+
+server_ip="54.237.66.93"
+user="ubuntu"
+ssh -i ~/.ssh/school $user@$server_ip
