@@ -1,30 +1,36 @@
 #!/usr/bin/python3
-"""Function to query a list of all hot posts on a given Reddit subreddit."""
+"""Queries the Reddit API
+"""
 import requests
 
 
-def recurse(subreddit, hot_list=[], after="", count=0):
-    """Returns a list of titles of all hot posts on a given subreddit."""
-    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
-    headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
-    }
-    params = {
-        "after": after,
-        "count": count,
-        "limit": 100
-    }
-    response = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
-    if response.status_code == 404:
-        return None
+def recurse(subreddit, hot_list=[], after=''):
+    """Returns recurse
+    """
+    # Set the Default URL strings
+    base_url = 'https://www.reddit.com'
+    api_uri = '{base}/r/{subreddit}/hot.json'.format(base=base_url,
+                                                     subreddit=subreddit)
 
-    results = response.json().get("data")
-    after = results.get("after")
-    count += results.get("dist")
-    for c in results.get("children"):
-        hot_list.append(c.get("data").get("title"))
+    # Set an User-Agent
+    user_agent = {'User-Agent': 'My User Agent 1.0'}
 
-    if after is not None:
-        return recurse(subreddit, hot_list, after, count)
-    return hot_list
+    payload = {'after': after, 'limit': '100'}
+
+    res = requests.get(api_uri, headers=user_agent,
+                       params=payload, allow_redirects=False)
+
+    if res.status_code == 200:
+        res = res.json()
+        hot_posts = res.get('data').get('children')
+        after = res.get('data').get('after')
+
+        for post in hot_posts:
+            hot_list.append(post.get('data').get('title'))
+
+        if after is not None:
+            recurse(subreddit, hot_list, after)
+
+        return hot_list
+
+    return None
