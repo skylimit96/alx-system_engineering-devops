@@ -1,0 +1,141 @@
+[34m
+* Datadog Agent 7 install script v1.26.0
+[0m
+[34m
+* Installing apt-transport-https, curl and gnupg
+[0m
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Hit:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports InRelease
+Get:4 http://repo.mysql.com/apt/ubuntu bionic InRelease [20.0 kB]
+Ign:5 https://apt.datadoghq.com stable InRelease
+Hit:6 https://apt.datadoghq.com stable Release
+Get:7 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [3,028 kB]
+Err:4 http://repo.mysql.com/apt/ubuntu bionic InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY B7B3B788A8D3785C
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1,154 kB]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [277 kB]
+Get:12 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [2,647 kB]
+Get:13 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [929 kB]
+Get:14 http://security.ubuntu.com/ubuntu focal-security/universe Translation-en [195 kB]
+Reading package lists...
+W: GPG error: http://repo.mysql.com/apt/ubuntu bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY B7B3B788A8D3785C
+E: The repository 'http://repo.mysql.com/apt/ubuntu bionic InRelease' is not signed.
+W: Target Packages (mysql-5.7/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target Packages (mysql-5.7/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target Translations (mysql-5.7/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target Translations (mysql-5.7/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target CNF (mysql-5.7/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target CNF (mysql-5.7/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+[31m'apt-get update' failed, the script will not install the latest version of apt-transport-https.[0m
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (7.68.0-1ubuntu2.21).
+gnupg is already the newest version (2.2.19-3ubuntu2.2).
+apt-transport-https is already the newest version (2.0.10).
+0 upgraded, 0 newly installed, 0 to remove and 73 not upgraded.
+[34m
+* Installing APT package sources for Datadog
+[0m
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6226  100  6226    0     0  59295      0 --:--:-- --:--:-- --:--:-- 59295
+gpg: key 32637D44F14F620E: "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1713  100  1713    0     0  41780      0 --:--:-- --:--:-- --:--:-- 41780
+gpg: key E6266D4AC0962C7D: "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6226  100  6226    0     0   233k      0 --:--:-- --:--:-- --:--:--  233k
+gpg: key 32637D44F14F620E: "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  9001  100  9001    0     0   325k      0 --:--:-- --:--:-- --:--:--  325k
+gpg: key D3A80E30382E94DE: "Datadog, Inc <package@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+Ign:1 https://apt.datadoghq.com stable InRelease
+Hit:2 https://apt.datadoghq.com stable Release
+Reading package lists...
+  [33mInstalling package(s): datadog-agent datadog-signing-keys datadog-apm-inject datadog-apm-library-java datadog-apm-library-js datadog-apm-library-python datadog-apm-library-dotnet datadog-apm-library-ruby
+[0m
+Reading package lists...
+Building dependency tree...
+Reading state information...
+datadog-signing-keys is already the newest version (1:1.3.1-1).
+datadog-agent is already the newest version (1:7.50.3-1).
+The following NEW packages will be installed:
+  datadog-apm-inject datadog-apm-library-dotnet datadog-apm-library-java
+  datadog-apm-library-js datadog-apm-library-python datadog-apm-library-ruby
+0 upgraded, 6 newly installed, 0 to remove and 73 not upgraded.
+Need to get 217 MB of archives.
+After this operation, 593 MB of additional disk space will be used.
+Get:1 https://apt.datadoghq.com stable/7 amd64 datadog-apm-inject amd64 0.12.2-1 [35.1 MB]
+Get:2 https://apt.datadoghq.com stable/7 amd64 datadog-apm-library-dotnet amd64 2.45.0-1 [19.1 MB]
+Get:3 https://apt.datadoghq.com stable/7 amd64 datadog-apm-library-java amd64 1.27.0-1 [25.8 MB]
+Get:4 https://apt.datadoghq.com stable/7 amd64 datadog-apm-library-js amd64 4.19.0-1 [18.6 MB]
+Get:5 https://apt.datadoghq.com stable/7 amd64 datadog-apm-library-python amd64 2.4.1-1 [66.8 MB]
+Get:6 https://apt.datadoghq.com stable/7 amd64 datadog-apm-library-ruby amd64 1.19.0-1 [51.7 MB]
+Fetched 217 MB in 12s (17.6 MB/s)
+Selecting previously unselected package datadog-apm-inject.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 119909 files and directories currently installed.)
+Preparing to unpack .../0-datadog-apm-inject_0.12.2-1_amd64.deb ...
+Unpacking datadog-apm-inject (0.12.2-1) ...
+Selecting previously unselected package datadog-apm-library-dotnet.
+Preparing to unpack .../1-datadog-apm-library-dotnet_2.45.0-1_amd64.deb ...
+Unpacking datadog-apm-library-dotnet (2.45.0-1) ...
+Selecting previously unselected package datadog-apm-library-java.
+Preparing to unpack .../2-datadog-apm-library-java_1.27.0-1_amd64.deb ...
+Unpacking datadog-apm-library-java (1.27.0-1) ...
+Selecting previously unselected package datadog-apm-library-js.
+Preparing to unpack .../3-datadog-apm-library-js_4.19.0-1_amd64.deb ...
+Unpacking datadog-apm-library-js (4.19.0-1) ...
+Selecting previously unselected package datadog-apm-library-python.
+Preparing to unpack .../4-datadog-apm-library-python_2.4.1-1_amd64.deb ...
+Unpacking datadog-apm-library-python (2.4.1-1) ...
+Selecting previously unselected package datadog-apm-library-ruby.
+Preparing to unpack .../5-datadog-apm-library-ruby_1.19.0-1_amd64.deb ...
+Unpacking datadog-apm-library-ruby (1.19.0-1) ...
+Setting up datadog-apm-library-dotnet (2.45.0-1) ...
++ mkdir -p /var/log/datadog/dotnet
++ chmod a+rwx /var/log/datadog/dotnet
+Setting up datadog-apm-library-python (2.4.1-1) ...
+Setting up datadog-apm-inject (0.12.2-1) ...
+This software installed by this package is in beta. It is not meant for general use at this time.
+Setting up datadog-apm-library-java (1.27.0-1) ...
+Setting up datadog-apm-library-ruby (1.19.0-1) ...
+Setting up datadog-apm-library-js (4.19.0-1) ...
+W: --force-yes is deprecated, use one of the options starting with --allow instead.
+W: Target Packages (mysql-5.7/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target Packages (mysql-5.7/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target Translations (mysql-5.7/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target Translations (mysql-5.7/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target CNF (mysql-5.7/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+W: Target CNF (mysql-5.7/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/mysql.list:1 and /etc/apt/sources.list.d/mysql.list:2
+[34m
+* Keeping old /etc/datadog-agent/datadog.yaml configuration file
+[0m
+Added preload config to /etc/ld.so.preload
+Added UDS config to /etc/datadog-agent/datadog.yaml
+/usr/bin/systemctl
+[34m* Starting the Datadog Agent...
+[0m
+[32m  Your Datadog Agent is running and functioning properly.
+[0m[32m  It will continue to run in the background and submit metrics to Datadog.
+[0m[32m  If you ever want to stop the Datadog Agent, run:
+
+      sudo systemctl stop datadog-agent
+
+  And to run it again run:
+
+      sudo systemctl start datadog-agent[0m
+
